@@ -1,3 +1,4 @@
+
 from flask import current_app as app
 from flask_login import current_user
 from sqlalchemy.sql.expression import func
@@ -12,8 +13,7 @@ Thing = app.model.Thing
 
 
 
-## DEF FONCTION ATTRACTION : FIRST VERSION
-## TOdO : normaliser les vecteurs preferences 
+
 def attraction(L1,L2):
     n1 = L1.length
     attractivite = 0
@@ -40,7 +40,6 @@ def get_reco_offers(user,limit=1):
                  .outerjoin(Event)\
                  .filter((Thing.thumbCount > 0) |
                          (Event.thumbCount > 0))
-    # KEEP THE BEST OFFER THE USER
     print('before tri offers.count', query.count())
         if user.is_authenticated:
             best = 0
@@ -49,9 +48,13 @@ def get_reco_offers(user,limit=1):
             L1 = user.preferences
             for i in range(n):
                 L2 = offer.preferences
-                if attraction(L1,L2) > best:
-                    index = i
+                if best < attraction(L1,L2):
                     best = attraction(L1,L2)
-        Proposition = query.get(index)
-        query.delete(query.get(index))
-        return Proposition
+                    index = i
+            Proposition = query.get(index)
+            query.delete(index)
+            return Proposition
+
+
+
+#lien
