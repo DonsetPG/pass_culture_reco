@@ -2,7 +2,10 @@ import bcrypt
 from flask import current_app as app
 
 db = app.db
-
+amount_user = 1
+alpha = 1
+alphaBis = 1
+betaBis = 1
 
 class User(app.model.PcObject,
             db.Model,
@@ -40,11 +43,13 @@ class User(app.model.PcObject,
             accepted.append(offer)
 
             for i in range(Offer.tags.length):
-                (n/(n+1))*preferences[i] + (1/(n+1))*offer.preferences[i]
+                preferences[i] += alpha * ((n/(n+1))*preferences[i] + (1/(n+1))*offer.preferences[i])
+                offer.preferences[i] += beta * ((n/(n+1))*offer.preferences[i] + (1/(n+1))*preferences[i]) * (V(preferences,offer.preferences)/amount_user)
         else:
             rejected.append(offer)
             for i in range(Offer.tags.length):
-                (n/(n+1))*preferences[i] + (1/(n+1))*(1-offer.preferences[i])
+                preferences[i]+= alphaBis* ((n/(n+1))*preferences[i] + (1/(n+1))*(1-offer.preferences[i]))
+                offer.preferences[i] += (betaBis/amount_user)* ((n/(n+1))*offer.preferences[i] + (1/(n+1))*(1-preferences[i]))
 
         seen.append(offer)
 
