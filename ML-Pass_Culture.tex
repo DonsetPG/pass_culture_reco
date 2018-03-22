@@ -1,8 +1,8 @@
-\documentclass[11pt, oneside]{article}   	
-\usepackage{geometry}                		
-\geometry{letterpaper}                   		
+\documentclass[11pt, oneside]{article}
+\usepackage{geometry}
+\geometry{letterpaper}
 \usepackage{amsmath}
-\usepackage{graphicx}						
+\usepackage{graphicx}
 \usepackage{amssymb}
 
 \usepackage[francais]{babel}
@@ -21,7 +21,7 @@
 \maketitle
 
 
-\pagestyle{empty} 
+\pagestyle{empty}
 
 \maketitle
 
@@ -46,15 +46,15 @@ $\mathcal{O} = \{O_i \; ; \; i \in \mathbb{N} \}$ l'ensemble des offres \\
 
 ainsi que $N_1$ le nombre de tags principaux ("Théâtre", "Peinture", "Opéra", ...) et $N_2$ le nombre de tags secondaires ("Français", "Italien", "Familial", ...). \\
 
-À chaque $O_i$ et $U_i$ on associe donc, comme dit plus haut, une matrice des caractéristiques. D'un point de vue informatique, on les appellera par $U_i$.preference et $O_i$.preference. Ici, mathématiquement, on les notera $\mathcal{M} (U_i)$ et $\mathcal{M} (O_i)$. Ces matrices seront de tailles $N_2 \times N_1$. 
+À chaque $O_i$ et $U_i$ on associe donc, comme dit plus haut, une matrice des caractéristiques. D'un point de vue informatique, on les appellera par $U_i$.preference et $O_i$.preference. Ici, mathématiquement, on les notera $\mathcal{M} (U_i)$ et $\mathcal{M} (O_i)$. Ces matrices seront de tailles $N_2 \times N_1$.
 
 \begin{center}
 \[
-\mathcal{M} (O_i) = 
+\mathcal{M} (O_i) =
 \begin{pmatrix}
 a_{1,1} & \cdots & a_{1,N_1} \\
 \vdots & & \vdots \\
-a_{N_2,1} & \cdots & a_{N_2,N_1} 
+a_{N_2,1} & \cdots & a_{N_2,N_1}
 \end{pmatrix}
 \]
 où :
@@ -62,15 +62,15 @@ où :
  \left \{
    \begin{array}{r c l}
       \forall i,j \; \; & 0 \leq a_{i,j} \leq 1 \\
-      \displaystyle \sum_{i,j} a_{i,j} &=& 1 \\ 
+      \displaystyle \sum_{i,j} a_{i,j} &=& 1 \\
    \end{array}
    \right .
-\]   
+\]
 \end{center}
 
 La somme égale à $1$ signifie que la matrice est normalisée. On les normalise avec la norme $1$, que l'on retrouvera dans le produit scalaire pour notre fonction attraction (représentant littéralement l'attraction entre un utilisateur et une offre). \\
 
-En effet, on définit donc une fonction attraction $\phi$ : 
+En effet, on définit donc une fonction attraction $\phi$ :
 
 \begin{center}
 \[
@@ -85,21 +85,21 @@ En effet, on définit donc une fonction attraction $\phi$ :
 
 Par la normalisation des matrices préférences ainsi que par la définition de $\phi$ (c'est un produit scalaire), on peut utiliser l'inégalité de Cauchy-Schwarz et on s'assurer que $\forall i,j$, on a $\phi (\mathcal{M} (U_i)$,$\mathcal{M} (O_j)) \in \left{[}0,1\right{]}$. Finalement, plus cette fonction est proche de $1$, plus l'évenement est censé plaire à notre utilisateur. \\ On renverra donc en priorité max($\{\phi (U_i,O_j) \; ; \; O_j \in \mathcal{O} \}$. \\
 
-De la même façon, on va introduire une fonction "ressemblance" $\Theta$ entre deux utilisateurs et une autre pour deux évenements $\theta$ : 
+De la même façon, on va introduire une fonction "ressemblance" $\Theta$ entre deux utilisateurs et une autre pour deux évenements $\theta$ :
 
 \begin{center}
 \[
 \begin{array}{l|rcl}
 \Theta : &  \mathcal{U}^{2} & \longrightarrow & \left{[}0,1\right{]} \\
     & (U_i,U_j) & \longmapsto & \Theta (U_i,U_j) \end{array}
-\\    
+\\
 \begin{array}{l|rcl}
 \theta : & \mathcal{O}^{2} & \longrightarrow & \left{[}0,1\right{]} \\
     & (O_i,O_j) & \longmapsto & \theta (O_i,O_j) \end{array}
 \]
 \end{center}
 
-On va aussi définir une fonction $\mathcal{V}$ représentant le potentiel d'un utilisateur $U_i$ pour évaluer un évenement $O_i$ : 
+On va aussi définir une fonction $\mathcal{V}$ représentant le potentiel d'un utilisateur $U_i$ pour évaluer un évenement $O_i$ :
 \begin{center}
 \[
 \begin{array}{l|rcl}
@@ -108,12 +108,12 @@ On va aussi définir une fonction $\mathcal{V}$ représentant le potentiel d'un 
 \]
 
 \end{center}
-\newline 
-On va ainsi construite ces différentes fonctions pour pouvoir constamment modifier les matrices  $\mathcal{M} (U_i)$ et $\mathcal{M} (O_i)$. Il faudra d'abord prendre en compte l'utilisateur précisement : ce qu'il choisit, ce qu'il ne choisit pas et comment ceci influe sur les matrices. Ensuite, il faudra prendre en compte ce que les utilisateurs qui lui ressembles font. Finalement, on prendra aussi en compte ce que l'utilisateur choisit, non pas pour modifier les matrices mais pour directement changer les offres recommendées. 
+\newline
+On va ainsi construite ces différentes fonctions pour pouvoir constamment modifier les matrices  $\mathcal{M} (U_i)$ et $\mathcal{M} (O_i)$. Il faudra d'abord prendre en compte l'utilisateur précisement : ce qu'il choisit, ce qu'il ne choisit pas et comment ceci influe sur les matrices. Ensuite, il faudra prendre en compte ce que les utilisateurs qui lui ressembles font. Finalement, on prendra aussi en compte ce que l'utilisateur choisit, non pas pour modifier les matrices mais pour directement changer les offres recommendées.
 
-\section{Le cas de l'utilisateur seul} 
+\section{Le cas de l'utilisateur seul}
 
-Considérons d'abord ce qui ce passe à partir du moment où des offres sont proposées à l'utilisateur. On considère qu'une offre "vue" mais non "swipe up" peut toujours changer d'état si l'utilisateur revient dessus. Il existe aussi des offres tout simplement "non vue". Ainsi, si l'on note $\mathcal{OP}$ pour offres proposées l'ensemble de ces offres, on peut le partitionner comme suit : 
+Considérons d'abord ce qui ce passe à partir du moment où des offres sont proposées à l'utilisateur. On considère qu'une offre "vue" mais non "swipe up" peut toujours changer d'état si l'utilisateur revient dessus. Il existe aussi des offres tout simplement "non vue". Ainsi, si l'on note $\mathcal{OP}$ pour offres proposées l'ensemble de ces offres, on peut le partitionner comme suit :
 
 \begin{center}
 
@@ -125,17 +125,17 @@ où $\mathcal{L}$ sont les offres swipe up, $\mathcal{UL}$ les offres non swipe 
 
 \textbf{Le cas de $\mathcal{L}$} : \\
 
-On note ici l'utilisateur $U_{i_0} \in \mathcal{U}$ et l'evenement $O_{j_0} \in \mathcal{O}$. On saît déjà qu'il est intéréssé par l'évenement en question. On va donc modifier leurs matrices respectives. Dans le cas d'un evenement "swipe up", on va modifier les matrices sur tout leurs coefficients (ce ne sera pas le cas pour l'ensemble $\mathcal{UL}$. Il faut prendre en compte différents facteurs : le nombre d'utilisateur $\#\mathcal{U}$, sa faculté à influencer l'évenement $\mathcal{V}$ et finalement deux facteurs multiplicatifs $\alpha$ et $\beta$ pour pouvoir jouer sur le changement des matrices. \\ 
+On note ici l'utilisateur $U_{i_0} \in \mathcal{U}$ et l'evenement $O_{j_0} \in \mathcal{O}$. On saît déjà qu'il est intéréssé par l'évenement en question. On va donc modifier leurs matrices respectives. Dans le cas d'un evenement "swipe up", on va modifier les matrices sur tout leurs coefficients (ce ne sera pas le cas pour l'ensemble $\mathcal{UL}$. Il faut prendre en compte différents facteurs : le nombre d'utilisateur $\#\mathcal{U}$, sa faculté à influencer l'évenement $\mathcal{V}$ et finalement deux facteurs multiplicatifs $\alpha$ et $\beta$ pour pouvoir jouer sur le changement des matrices. \\
 
-Pour les matrices $\mathcal{M} (U_i)$ et $\mathcal{M} (O_i)$, on considère un coefficient arbitraite $a_{p,q}$ et $b_{p,q}$, et on va réaliser l'opération suivante : 
+Pour les matrices $\mathcal{M} (U_i)$ et $\mathcal{M} (O_i)$, on considère un coefficient arbitraite $a_{p,q}$ et $b_{p,q}$, et on va réaliser l'opération suivante :
 \begin{center}
 \[
- \big( a_{p,q} \times \frac{S}{S+1} + b_{p,q}\times \frac{1}{S+1} \big) \times \frac{\alpha}{\#\mathcal{U}}
+ \big( a_{p,q} \times \frac{S}{S+1} + b_{p,q}\times \frac{1}{S+1} \big) \times \alpha
 \]
 \end{center}
-et remplacer $a_{p,q}$ par ce que l'on vient de calculer. 
+et ajoute à $a_{p,q}$ par ce que l'on vient de calculer.
 
-De la même façon, on va remplacer $b_{p,q}$ par : 
+De la même façon, on ajoute à $b_{p,q}$ :
 \begin{center}
 \[
  \big( b_{p,q} \times \frac{S}{S+1} + a_{p,q}\times \frac{1}{S+1} \big) \times \beta \times \frac{\mathcal{V}(U_{i_0},O_{j_0})}{\#\mathcal{U}}
@@ -146,13 +146,13 @@ Discution autour des coefficients : (todo) \\
 \newpage
 \textbf{Le cas de $\mathcal{UL}$} : \\
 
-Il semblerait qu'ici, on puisse se contenter de réaliser les mêmes calculs mais avec les coefficients conjugués. On introduit tout de même deux nouveaux coefficients $\tilde{\alpha}$ et $\tilde{\beta}$. De plus, on n'utilise pas pour le moment, dans ce cas précis, la fonction $\mathcal{V}$. On va donc remplacer $a_{p,q}$ et $b_{p,q}$ par : 
+Il semblerait qu'ici, on puisse se contenter de réaliser les mêmes calculs mais avec les coefficients conjugués. On introduit tout de même deux nouveaux coefficients $\tilde{\alpha}$ et $\tilde{\beta}$. De plus, on n'utilise pas pour le moment, dans ce cas précis, la fonction $\mathcal{V}$. On va donc ajouter à $a_{p,q}$ et à $b_{p,q}$: 
 \begin{center}
 \[
- \big( a_{p,q} \times \frac{S}{S+1} + (1 - b_{p,q})\times \frac{1}{S+1} \big) \times \frac{\tilde{\alpha}}{\#\mathcal{U}}
+ \big( a_{p,q} \times \frac{S}{S+1} + (1 - b_{p,q})\times \frac{1}{S+1} \big) \times\tilde{\alpha}
 \]
 \end{center}
-et : 
+et :
 \begin{center}
 \[
  \big( b_{p,q} \times \frac{S}{S+1} + (1 - a_{p,q})\times \frac{1}{S+1} \big) \times \frac{\mathcal{\tilde{\beta}}}{\#\mathcal{U}}
@@ -161,22 +161,22 @@ et :
 
 \textbf{Le cas de $\mathcal{US}$} : \\
 
-On considère ici qu'un évenement non vu est voué à l'être. On ne modifie donc rien pour les évenements proposés mais non vus. Il n'y a donc pas de changement. C'est cependant un ensemble à prendre en compte d'un point de vue algorithmique dans tout nos programmes. 
+On considère ici qu'un évenement non vu est voué à l'être. On ne modifie donc rien pour les évenements proposés mais non vus. Il n'y a donc pas de changement. C'est cependant un ensemble à prendre en compte d'un point de vue algorithmique dans tout nos programmes.
 
 
 
 \section{Interactions entre les différents utilisateurs}
 
-On se donne un entier $k \in \mathbb{N}$, et on considère l'ensemble : 
-\begin{center} $\mathcal{N} _k (U_i) = \{ U_j \; \text{telle que} \; \Theta (U_i,U_j) \; \text{soit l'une des} \; k\; \text{plus grandes valeurs} \} $ \end{center} 
-On ne va considérer que ces $k$ utilisateurs pour influencer la matrice de notre utilisateur ainsi que celles des événements dans $\mathcal{L}$. Il faut tout de même avoir défini avant cela la fonction $\Theta$, considérons pour le moment que c'est la même fonction attraction $\phi$, comme défini au début du document. Plus que la simple fonction $\phi$ d'attraction, on peut calculer une seconde fonction d'attraction, grâce aux autres utilisateurs. Cette fonction se base plus ou moins sur une interpretation des Relations de Chasles. Notons $\psi$ la quantité suivante : 
+On se donne un entier $k \in \mathbb{N}$, et on considère l'ensemble :
+\begin{center} $\mathcal{N} _k (U_i) = \{ U_j \; \text{telle que} \; \Theta (U_i,U_j) \; \text{soit l'une des} \; k\; \text{plus grandes valeurs} \} $ \end{center}
+On ne va considérer que ces $k$ utilisateurs pour influencer la matrice de notre utilisateur ainsi que celles des événements dans $\mathcal{L}$. Il faut tout de même avoir défini avant cela la fonction $\Theta$, considérons pour le moment que c'est la même fonction attraction $\phi$, comme défini au début du document. Plus que la simple fonction $\phi$ d'attraction, on peut calculer une seconde fonction d'attraction, grâce aux autres utilisateurs. Cette fonction se base plus ou moins sur une interpretation des Relations de Chasles. Notons $\psi$ la quantité suivante :
 \begin{center}
 \[
 \psi (U_i,O_j) = \frac{\displaystyle \sum _{p \in \mathcal{N} _k (U_i)} \Theta (U_i,p) \times \phi (p,O_j)}{\displaystyle \sum _{p \in \mathcal{N} _k (U_i)} \Theta (U_i,p)}
 \]
 \end{center}
 
-C'est une nouvelle fonction d'attraction qui prend ici en compte les autres utilisateurs. On va l'utiliser pour modifier les matrices de préferences d'un utilisateurs. On note $\Delta$ la fonction suivante : 
+C'est une nouvelle fonction d'attraction qui prend ici en compte les autres utilisateurs. On va l'utiliser pour modifier les matrices de préferences d'un utilisateurs. On note $\Delta$ la fonction suivante :
 \begin{center}
 \[
 \begin{array}{l|rcl}
@@ -189,10 +189,10 @@ C'est une nouvelle fonction d'attraction qui prend ici en compte les autres util
 On va utiliser cette fonction maintenant, et on l'utilisera aussi ensuite pour proposer directement des nouveaux évenements. Pour la modification des matrices, on va chercher à comprendre pourquoi il peut y avoir une telle différence entre $\phi$ et $\psi$. \\
  Si $\psi(U_i,O_j) \leq \phi(U_i,O_j)$, on ne s'y intéresse pas. En revanche, si l'on a $\phi(U_i,O_j) \leq \psi(U_i,O_j)$, il faut chercher à comprend quels coefficients des matrices en sont la cause. Considérons, de façon arbitraire pour le moment, que l'on ne va modifier que $5$ coefficients. On note tout de même $n$ cet entier. \\
 On note $\mathcal{I} (U_i,O_j$ l'ensemble à $2n$ élément qui se constitue des couples $(p,q)$ lié aux produits $a_{k,l}b_{k,l} $ les plus importants. \\
-On considère maintenant $\mathcal{J}$ l'intersection de ces ensembles : 
+On considère maintenant $\mathcal{J}$ l'intersection de ces ensembles :
 \begin{center}
 \[
-\mathcal{J} = \bigcap _{p \in \mathcal{N} _k (U_i) } \mathcal{I} (p,O_j) 
+\mathcal{J} = \bigcap _{p \in \mathcal{N} _k (U_i) } \mathcal{I} (p,O_j)
 \]
 
 \end{center}
@@ -205,12 +205,12 @@ Finalement, on va enfin modifier les bon coefficients $\{a_{p,q} \; ; \; (p,q) \
        a_{p,q} + \frac{\Delta (U_i,O_j)}{2} \;  &\text{si}& \; a_{p,q} + \Delta (U_i,O_j) \leq 1  \\
        \frac{ a_{p,q} + 1}{2} &\text{sinon}& \\
    \end{array}
-   \right .  
+   \right .
 \]
-\end{center} 
-\\ 
+\end{center}
+\\
 
-On va maintenant voir comment les autres utilisateurs peuvent directement influencer les offres proposées. Il nous suffit de remplacer la fonction d'attraction $\phi$ par $\psi$. On récupère ainsi les offres proposées par $\psi$ et pas par $\phi$, et on les injectes avec une proportion de $z \%$. 
+On va maintenant voir comment les autres utilisateurs peuvent directement influencer les offres proposées. Il nous suffit de remplacer la fonction d'attraction $\phi$ par $\psi$. On récupère ainsi les offres proposées par $\psi$ et pas par $\phi$, et on les injectes avec une proportion de $z \%$.
 
 \section{Dernière façon de proposer des événements}
 
