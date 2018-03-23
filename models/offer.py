@@ -77,7 +77,8 @@ class Offer(app.model.PcObject,
                           nullable=False,
                           default=1)
 
-    tags=["arts de la rue","autres","chansons / variétés","cirque / magie","danse","humour / café-théâtre","musique classique / opéra"
+    tags=["arts de la rue","autres","chansons / variétés","cirque / magie","danse","humour / café-théâtre",
+    "musique classique / opéra",
     "musique du monde","musique hip-hop / rnb / soul","musique jazz / blues / reggae","musique pop / rock / electro",
     "pluridisciplinaire","spectacle jeunesse","spectacle musical / cabaret / opérette","théâtre",
     "cinéma","livre","musée","exposition","conférence","visite"]

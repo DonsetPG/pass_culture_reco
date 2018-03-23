@@ -5,9 +5,25 @@ import unidecode
 data = json.load(open('data.txt', encoding='utf8'))
 
 
-#returns the occurence of the word "word" in the title, the description or the location of the nth offer
-def word_in_offer(word, n):
-    r=0
+
+tags=["arts de la rue","autres","chansons / variétés","cirque / magie","danse","humour / café-théâtre","musique classique / opéra"
+    "musique du monde","musique hip-hop / rnb / soul","musique jazz / blues / reggae","musique pop / rock / electro",
+    "pluridisciplinaire","spectacle jeunesse","spectacle musical / cabaret / opérette","théâtre",
+    "cinéma","livre","musée","exposition","conférence","visite"]
+
+
+tags_sec=["asiatique","france","anglo-saxon","hispanique","germanique","africain","classique",
+    "baroque","impressionniste","moderne","photographie"]
+
+
+tags_related=[["rue"],["autre"],["chant","chanson","variete"],["cirque","magie"],["danse","humour","cafe"],["classique","opera"],
+    ["monde","musique"],["hip","hop","rnb","soul","musique"],["jazz","blues","reggae","musique"],["pop","rock","electro"],
+    ["pluridisciplinaire"],["spectacle" ,"jeune"],["spectacle","musique","cabaret","operette"],["theatre"],
+    ["cinema"],["livre"],["musee"],["exposition"],["conference"],["visite"]]
+
+
+
+def normalize_offer(n):
     words=data['offers'][str(n)]["title"].replace("'"," ").lower().split()+\
     data['offers'][str(n)]["description"].replace("'"," ").lower().split()+\
     data['offers'][str(n)]["location"].replace("'"," ").lower().split()
@@ -21,5 +37,17 @@ def word_in_offer(word, n):
         if(len(w)>2):
             words_clean.append(w)
 
-    return words_clean.count(word)
+    return words_clean
+
+def analyze_offer(n):
+    words=normalize_offer(n)
+    pref=[0]*len(tags)
+    for i in range(len(tags)):
+        for w in words:
+            pref[i]+=tags_related[i].count(w)
+    return pref
+
+    
+
+
                 
