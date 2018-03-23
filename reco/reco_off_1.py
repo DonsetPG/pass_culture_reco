@@ -11,7 +11,6 @@ UserMediation = app.model.UserMediation
 UserMediationOffer = app.model.UserMediationOffer
 Thing = app.model.Thing
 
-
 ### ICI POUR DES VECTEURS
 
 def attraction(L1,L2):
@@ -183,7 +182,7 @@ def J(user,offer,j,taille):
 def IS_EMPTY(vect):
     return (vect.length == 0)
 
-### Commetn faire evoluer la matrice des preferences d'une nouvelle façon
+### Comment faire evoluer la matrice des preferences d'une nouvelle façon
 
 def modif_pref(user):
     query = Offer.query
@@ -213,4 +212,38 @@ def modif_pref(user):
             else:
                 user.preferences[J[p][0]][J[p][1]] = (user.preferences[J[p][0]][J[p][1]] +1)/2
 
- ###TODo LATEX PARTIE 4 
+### Seconde manière de get des offer avec l'autre  fonction attraction
+def get_reco_offers2(user,limit=1):
+    query = Offer.query
+    # REMOVE OFFERS FOR WHICH THERE IS ALREADY A MEDIATION FOR THIS USER
+    print('before userMediation offers.count', query.count())
+    if user.is_authenticated:
+        query = query.filter(
+            ~Offer.userMediationOffers.any() |\
+            Offer.userMediationOffers.any(UserMediation.user != user)
+        )
+
+    # REMOVE OFFERS WITHOUT THUMBS
+    print('after userMediation offers.count', query.count())
+    query = query.outerjoin(Thing)\
+                 .outerjoin(EventOccurence)\
+                 .outerjoin(Event)\
+                 .filter((Thing.thumbCount > 0) |
+                         (Event.thumbCount > 0))
+    print('before tri offers.count', query.count())
+        if user.is_authenticated:
+            best = 0
+            index = 0
+            n = query.length
+            L1 = user.preferences
+            for i in range(n):
+                L2 = offer.preferences
+                if best < attraction2(L1,L2):
+                    best = attraction2(L1,L2)
+                    index = i
+            Proposition = query.get(index)
+            query.delete(index)
+            return Proposition
+
+
+ ###TODo LATEX PARTIE 4
