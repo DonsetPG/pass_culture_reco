@@ -61,11 +61,11 @@ def get_reco_offers(user,limit=1):
 def attraction(M1,M2):
     n = len(M1)
     m = len(M1[0])
-    attraction = 0
+    Attraction = 0
     for i in range(n):
-        for i in range(m):
-            attraction += M1[i][j]
-    return attraction
+        for j in range(m):
+            Attraction += M1[i][j]*M2[i][j]
+    return Attraction
 
 #def fonction Theta : pour le moment, on ne considère qu'une fonction attraction.
 # on va donc la réutiliser directement
@@ -73,33 +73,33 @@ def attraction(M1,M2):
 def Theta(M1,M2):
     n = len(M1)
     m = len(M1[0])
-    attraction = 0
+    Attraction = 0
     for i in range(n):
-        for i in range(m):
-            attraction += M1[i][j]
-    return attraction
+        for j in range(m):
+            Attraction += M1[i][j]*M2[i][j]
+    return Attraction
 
 #idem pour theta:
 
 def theta(M1,M2):
     n = len(M1)
     m = len(M1[0])
-    attraction = 0
+    Attraction = 0
     for i in range(n):
-        for i in range(m):
-            attraction += M1[i][j]
-    return attraction
+        for j in range(m):
+            Attraction += M1[i][j]*M2[i][j]
+    return Attraction
 
 #idem pour V
 
 def V(M1,M2):
     n = len(M1)
     m = len(M1[0])
-    attraction = 0
+    Attraction = 0
     for i in range(n):
-        for i in range(m):
-            attraction += M1[i][j]
-    return attraction
+        for j in range(m):
+            Attraction += M1[i][j]*M2[i][j]
+    return Attraction
 
 #calcul des k plus proches
 
@@ -109,7 +109,7 @@ def KNU(user,k):
     query = User.query
     for i in query:
         ensemble.append(attraction(user.preferences,i.preferences))
-    ensemble.sorted()
+    sorted(ensemble)
     n = len(ensemble)
     for i in range(k):
         KNU.append(ensemble[n-1-i])
@@ -143,7 +143,7 @@ def I(user,offer,taille):
     m = len(user.preferences[0])
     compte = -1
     for i in range(n):
-        for i range(m):
+        for i in range(m):
             compte += 1
             a = user.preferences[i][j] * offer.preferences[i][j]
             while compte < taille:
