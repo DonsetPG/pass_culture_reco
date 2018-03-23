@@ -26,3 +26,15 @@ Pour les tags principaux i.e. les colonnes de la matrice :
 [19] conférence
 
 et pour les tags secondaires i.e. les lignes de la matrice
+
+[0] asiatique
+[1] france
+[2] anglo-saxon
+[3] hispanique
+[4] germanique
+[5] africain  
+[6] classique
+[7] baroque
+[8] impressionniste
+[9] moderne
+[10] photographie
