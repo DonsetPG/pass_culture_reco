@@ -104,7 +104,7 @@ def V(M1,M2):
 #calcul des k plus proches
 
 def KNU(user,k):
-    KNU = []
+    KNU = [0]*k
     ensemble = []
     query = User.query
     for i in query:
