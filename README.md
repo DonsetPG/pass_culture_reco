@@ -24,6 +24,7 @@ Pour les tags principaux i.e. les colonnes de la matrice :
 [17] musée
 [18] exposition
 [19] conférence
+[20] visite 
 
 et pour les tags secondaires i.e. les lignes de la matrice
 
