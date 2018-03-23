@@ -80,7 +80,7 @@ class Offer(app.model.PcObject,
     tags=["arts de la rue","autres","chansons / variétés","cirque / magie","danse","humour / café-théâtre","musique classique / opéra"
     "musique du monde","musique hip-hop / rnb / soul","musique jazz / blues / reggae","musique pop / rock / electro",
     "pluridisciplinaire","spectacle jeunesse","spectacle musical / cabaret / opérette","théâtre",
-    "cinéma","livre","musée","exposition","conférence"]
+    "cinéma","livre","musée","exposition","conférence","visite"]
     tags_sec=["asiatique","france","anglo-saxon","hispanique","germanique","africain","classique",
     "baroque","impressionniste","moderne","photographie"]
 
