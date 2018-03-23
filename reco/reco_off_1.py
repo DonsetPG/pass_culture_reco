@@ -143,18 +143,20 @@ def I(user,offer,taille):
     m = len(user.preferences[0])
     compte = -1
     for i in range(n):
-        for i in range(m):
-            compte += 1
+        for j in range(m):
+
             a = user.preferences[i][j] * offer.preferences[i][j]
             while compte < taille:
+                compte += 1
                 I.append([a,i,j])
-            I.sorted()
+            sorted(I)
             if a > I[0][0]:
                 I.pop(0)
                 I.append([a,i,j])
-            I.sorted()
+            sorted(I)
     for i in range(taille):
         returnI.append([I[i][1],I[i][2]])
+    return returnI
 
 #def de J, intersection des I
 
