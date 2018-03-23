@@ -14,7 +14,7 @@ Thing = app.model.Thing
 ### ICI POUR DES VECTEURS
 
 def attraction(L1,L2):
-    n1 = L1.length
+    n1 = len(L1)
     attractivite = 0
     for i in range(n1):
         attractivite += L1[i]*L2[i]
@@ -41,7 +41,7 @@ def get_reco_offers(user,limit=1):
         if user.is_authenticated:
             best = 0
             index = 0
-            n = query.length
+            n = len(query)
             L1 = user.preferences
             for i in range(n):
                 L2 = offer.preferences
@@ -59,8 +59,8 @@ def get_reco_offers(user,limit=1):
 # def fonction phi
 
 def attraction(M1,M2):
-    n = M1.length
-    m = M1[0].length
+    n = len(M1)
+    m = len(M1[0])
     attraction = 0
     for i in range(n):
         for i in range(m):
@@ -71,8 +71,8 @@ def attraction(M1,M2):
 # on va donc la réutiliser directement
 
 def Theta(M1,M2):
-    n = M1.length
-    m = M1[0].length
+    n = len(M1)
+    m = len(M1[0])
     attraction = 0
     for i in range(n):
         for i in range(m):
@@ -82,8 +82,8 @@ def Theta(M1,M2):
 #idem pour theta:
 
 def theta(M1,M2):
-    n = M1.length
-    m = M1[0].length
+    n = len(M1)
+    m = len(M1[0])
     attraction = 0
     for i in range(n):
         for i in range(m):
@@ -93,8 +93,8 @@ def theta(M1,M2):
 #idem pour V
 
 def V(M1,M2):
-    n = M1.length
-    m = M1[0].length
+    n = len(M1)
+    m = len(M1[0])
     attraction = 0
     for i in range(n):
         for i in range(m):
@@ -110,7 +110,7 @@ def KNU(user,k):
     for i in query:
         ensemble.append(attraction(user.preferences,i.preferences))
     ensemble.sorted()
-    n = ensemble.length
+    n = len(ensemble)
     for i in range(k):
         KNU.append(ensemble[n-1-i])
     return KNU
@@ -139,8 +139,8 @@ def Delta(user,offer,k):
 def I(user,offer,taille):
     returnI = []
     I = []
-    n = user.preferences.length
-    m = user.preferences[0].length
+    n = len(user.preferences)
+    m = len(user.preferences[0])
     compte = -1
     for i in range(n):
         for i range(m):
@@ -159,7 +159,7 @@ def I(user,offer,taille):
 #def de J, intersection des I
 
 def IS_IN(elmt,vect):
-    n = vect.length()
+    n = len(vect)
     for i in range(n):
         if vect[i] == elmt:
             return True
@@ -169,10 +169,10 @@ def IS_IN(elmt,vect):
 def J(user,offer,j,taille):
     KNU = KNU(user,taille)
     J = I(KNU[0],offer,taille)
-    n = KNU.length()
+    n = len(KNU)
     for j in range(1,n):
         I = I(KNU[i],offer,taille)
-        p = I.length
+        p = len(I)
         for k in range(p):
             if IS_IN(I[k],J) == False:
                 I.pop(k)
@@ -180,7 +180,7 @@ def J(user,offer,j,taille):
 
 
 def IS_EMPTY(vect):
-    return (vect.length == 0)
+    return (len(vect) == 0)
 
 ### Comment faire evoluer la matrice des preferences d'une nouvelle façon
 
@@ -201,10 +201,10 @@ def modif_pref(user):
                  .outerjoin(Event)\
                  .filter((Thing.thumbCount > 0) |
                          (Event.thumbCount > 0))
-    n = query.length()
+    n = len(query)
     for i in range(n):
         J = J(user,query[i],10)
-        p = J.length()
+        p = len(J)
         delta = Delta(user,query[i])
         for j in range(p):
             if (delta + user.preferences[J[p][0]][J[p][1]]) < 1):
@@ -234,7 +234,7 @@ def get_reco_offers2(user,limit=1):
         if user.is_authenticated:
             best = 0
             index = 0
-            n = query.length
+            n = len(query)
             L1 = user.preferences
             for i in range(n):
                 L2 = offer.preferences
