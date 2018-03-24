@@ -30,7 +30,7 @@ tags_related_p=[["rue","tag","bansky","graffiti","street"],["autre"],["chant","c
 ["exposition","peintre","peinture","sculpteur","sculpture","louvre","orsay","guimet","branly","beaubourg","pompidou"],
 ["conference","ted"],["visite"]]
 
-tags_related_s=[["asiatique","asie","chine","japon","corée","caligraphie","guimet"],[],["londres","anglais","angleterre","irlande","ecosse","etats-unis","usa","us","britannique","anglo-saxon"],
+tags_related_s=[["asiatique","asie","chine","japon","corée","calligraphie","guimet"],[],["londres","anglais","angleterre","irlande","ecosse","etats-unis","usa","us","britannique","anglo-saxon"],
 ["hispanique","espagne","portugal","italie","hiberique"],["germanique","allemagne","autriche","allemand","berlin"],["africain","afrique","branly"],
 ["classique","classiscisme"],["baroque","velasquez","clair-obscur","caravage","cortona"],["impressionniste","impressionnisme","monet","renoir","degas","manet","cezanne"],
 ["moderne","pop-art","picasso","dali","warhol"],["photographie"]]
@@ -50,9 +50,9 @@ def normalize(u):
 
 
 def normalize_offer(n):
-    words=data['offers'][str(n)]["title"].replace("'"," ").lower().split()+\
-    data['offers'][str(n)]["description"].replace("'"," ").lower().split()+\
-    data['offers'][str(n)]["location"].replace("'"," ").lower().split()
+    words=data['offers'][str(n)]["title"].replace("'"," ").replace("."," ").lower().split()+\
+    data['offers'][str(n)]["description"].replace("'"," ").replace("."," ").lower().split()+\
+    data['offers'][str(n)]["location"].replace("'"," ").replace("."," ").lower().split()
     words_clean=[]
     for i  in range(len(words)):
         words[i] = unidecode.unidecode(words[i])
@@ -81,17 +81,24 @@ def analyze_offer_sec(n):
             pref[i]+=tags_related_s[i].count(w)
     return pref
 
+def verif():
+    r=0
+    i=0
+    while i<400:
+        if analyze_offer_princ(i)!=[0]*20:
+            r+=1
+        i+=1
+        
+    print(r)
+
 def matrice_pref(n):
     tagsP = analyze_offer_princ(n)
     tagsS = analyze_offer_sec(n)
     #nombre de colonnes
-    N = len(tags_p)
+    N = len(tags)
     #nombre de lignes
     M = len(tags_sec)
-    matrice = np.random.rand(m,n)
-    for i in range(N):
-        for j in range(M):
-            matrice[j][i] = 0
+    matrice = np.zeros((M,N))
     for i in range(N):
         if (tagsP[i] != 0):
             for j in range(M):
