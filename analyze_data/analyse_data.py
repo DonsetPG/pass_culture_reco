@@ -16,10 +16,18 @@ tags_sec=["asiatique","france","anglo-saxon","hispanique","germanique","africain
     "baroque","impressionniste","moderne","photographie"]
 
 
-tags_related_p=[["rue"],["autre"],["chant","chanson","variete"],["cirque","magie"],["danse"],["humour","cafe"],["classique","opera"],
-    ["monde","musique"],["hip","hop","rnb","soul","musique"],["jazz","blues","reggae","musique"],["pop","rock","electro"],
-    ["pluridisciplinaire"],["spectacle" ,"jeune"],["spectacle","musique","cabaret","operette"],["theatre"],
-    ["cinema"],["livre"],["musee"],["exposition"],["conference"],["visite"]]
+tags_related_p=[["rue","tag","bansky","graffiti","street"],["autre"],["chant","chanson","variete","populaire","hallyday","gainsbourg","voix"],
+["cirque","magie","carte","clown","acrobate","elephant"],["danse","ballet","tango","salsa","danseur","danseuse","bastille","garnier"],
+["humour","cafe","virgule","drole","amusant"],["classique","opera","orchestre","bastille","garnier","chatelet","sonate","concerto","symphonie"],
+["monde","musique"],["hip","hop","rnb","soul","musique","rap"],["jazz","blues","reggae","musique","jams"],
+["pop","rock","electro","techno","guitare","idole","acid"],
+["pluridisciplinaire"],["spectacle" ,"jeune","jeunesse","enfant","petit","educatif"],
+["spectacle","musique","cabaret","operette","moulin"],
+["theatre","piece","acteur","actrice","planche"],
+["cinema","écran","film","directeur"],["livre","librairie","poeme","poesie","ecriture"],
+["musee","peintre","peinture","sculpteur","sculpture","louvre","orsay","guimet","branly","beaubourg","pompidou"],
+["exposition","peintre","peinture","sculpteur","sculpture","louvre","orsay","guimet","branly","beaubourg","pompidou"],
+["conference","ted"],["visite"]]
 
 tags_related_s=[["asiatique","asie","chine","japon","corée","caligraphie","guimet"],[],["londres","anglais","angleterre","irlande","ecosse","etats-unis","usa","us","britannique","anglo-saxon"],
 ["hispanique","espagne","portugal","italie","hiberique"],["germanique","allemagne","autriche","allemand","berlin"],["africain","afrique","branly"],
