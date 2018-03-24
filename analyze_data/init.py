@@ -291,6 +291,8 @@ def do_init():
         umo.userMediation = user_mediation
         check_and_save(umo)
 
+    create_mediation(0)
+
     ## BOOKINGS
     booking = model.Booking()
     booking.user = client_user
