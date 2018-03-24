@@ -16,7 +16,7 @@ tags_sec=["asiatique","france","anglo-saxon","hispanique","germanique","africain
     "baroque","impressionniste","moderne","photographie"]
 
 
-tags_related=[["rue"],["autre"],["chant","chanson","variete"],["cirque","magie"],["danse","humour","cafe"],["classique","opera"],
+tags_related=[["rue"],["autre"],["chant","chanson","variete"],["cirque","magie"],["danse"],["humour","cafe"],["classique","opera"],
     ["monde","musique"],["hip","hop","rnb","soul","musique"],["jazz","blues","reggae","musique"],["pop","rock","electro"],
     ["pluridisciplinaire"],["spectacle" ,"jeune"],["spectacle","musique","cabaret","operette"],["theatre"],
     ["cinema"],["livre"],["musee"],["exposition"],["conference"],["visite"]]
