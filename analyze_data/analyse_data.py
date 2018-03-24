@@ -21,7 +21,10 @@ tags_related_p=[["rue"],["autre"],["chant","chanson","variete"],["cirque","magie
     ["pluridisciplinaire"],["spectacle" ,"jeune"],["spectacle","musique","cabaret","operette"],["theatre"],
     ["cinema"],["livre"],["musee"],["exposition"],["conference"],["visite"]]
 
-tags_related_s=[]
+tags_related_s=[["asiatique","asie","chine","japon","corée","caligraphie","guimet"],[],["londres","anglais","angleterre","irlande","ecosse","etats-unis","usa","us","britannique","anglo-saxon"],
+["hispanique","espagne","portugal","italie","hiberique"],["germanique","allemagne","autriche","allemand","berlin"],["africain","afrique","branly"],
+["classique","classiscisme"],["baroque","velasquez","clair-obscur","caravage","cortona"],["impressionniste","impressionnisme","monet","renoir","degas","manet","cezanne"],
+["moderne","pop-art","picasso","dali","warhol"],["photographie"]]
 
 
 
