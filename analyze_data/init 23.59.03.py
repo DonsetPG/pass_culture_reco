@@ -164,30 +164,76 @@ def do_init():
     set_from_mock("thumbs", thing4, 4)
 
 
-    id_thing=4
 
-    things_tab=[thing1,thing2,thing3,thing4]
 
+
+"""
     def import_thing(n):
-        #id_thing+=1
+        thing4 = model.Thing()
+        thing4.type = model.ThingType.Book
+        thing4.description = "Roman d'aventures, écrit par Jules Verne, publié en 1872. Il raconte la course autour du monde d'un gentleman anglais, Phileas Fogg, qui a fait le pari d'y parvenir en 80 jours. Il est accompagné par Jean Passepartout, son serviteur français. L'ensemble du roman est un habile mélange entre récit de voyage (traditionnel pour Jules Verne) et données scientifiques comme celle utilisée pour le rebondissement de la chute du roman."
+        thing4.name = "Le Tour du monde en 80 jours (édition enrichie illustrée)"
+        thing4.type = "Book"
+        thing4.identifier = "2072534054"
+        thing4.extraData = {
+            'author' : "Jules Verne",
+            'prix_livre' : "13.99"
+        }
+        thing4.thumbCount = 1
+        check_and_save(thing4)
+        set_from_mock("thumbs", thing4, 4)
+        return thing4
+
+    def create_mediation(n):
+        offer = model.Offer()
+        offer.offerer = small_library_offerer
+        offer.thing = import_thing(n)
+        offer.price = 69 #offer.thing.extraData['price']
+        offer.venue = venue_bookshop
+
+        check_and_save(offer)
+        user_mediation = model.UserMediation()
+        mediation = model.Mediation()
+        mediation.author = pro_user
+        mediation.backText = offer.thing.description
+        mediation.frontText = offer.thing.name
+        mediation.thing = offer.thing
+        user_mediation.mediation = mediation
+        user_mediation.user = client_user
+        user_mediation.validUntilDate = datetime.now() + timedelta(days=2)
+        check_and_save(user_mediation)
+        umo = model.UserMediationOffer()
+        umo.offer = offer
+        umo.userMediation = user_mediation
+        check_and_save(umo)
+
+    create_mediation(0)
+"""
+
+
+"""#id_thing+=1
         thing_temp = model.Thing()
-        thing_temp.type = model.ThingType.Ticket
+        thing_temp.type = model.ThingType.Book
         thing_temp.description = data['offers'][str(n)]["description"]
         thing_temp.name = data['offers'][str(n)]["title"]
-        #thing_temp.type = "Book"
+        thing_temp.type = "Book"
         thing_temp.identifier = str(n)
+        thing_temp.extraData = {
+            'author' : "Jules Verne",
+            'prix_livre' : "13.99"
+        }
         thing_temp.extraData = {
             'location' : data['offers'][str(n)]["location"],
             'image' : data['offers'][str(n)]["image"],
             'price': data['offers'][str(n)]["prix"]
-        }
+        }s
         thing_temp.thumbCount = 1
         check_and_save(thing_temp)
 
         #set_from_mock("thumbs", thing_temp, id_thing)
         set_from_mock("thumbs", thing_temp, 5)
         things_tab.append(thing_temp)
-        return thing_temp
+        return thing_temp"""
 
 
 
@@ -248,7 +294,7 @@ def do_init():
     check_and_save(umo)
 
     # offer 4
-    offer = model.Offer()
+    """offer = model.Offer()
     offer.offerer = small_library_offerer
     offer.price = 8
     offer.venue = venue_bookshop
@@ -267,14 +313,14 @@ def do_init():
     umo = model.UserMediationOffer()
     umo.offer = offer
     umo.userMediation = user_mediation
-    check_and_save(umo)
+    check_and_save(umo)"""
 
 
-    def create_mediation(n):
+    """def create_mediation(n):
         offer = model.Offer()
         offer.offerer = small_library_offerer
         offer.thing = import_thing(n)
-        offer.price = offer.thing.extraData['price']
+        offer.price = 69 #offer.thing.extraData['price']
         offer.venue = venue_bookshop
 
         check_and_save(offer)
@@ -293,7 +339,7 @@ def do_init():
         umo.userMediation = user_mediation
         check_and_save(umo)
 
-    create_mediation(0)
+    create_mediation(0)"""
 
     ## BOOKINGS
     booking = model.Booking()
