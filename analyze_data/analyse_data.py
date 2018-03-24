@@ -1,6 +1,7 @@
 import json
-
+import numpy as np
 import unidecode
+import random as random
 
 data = json.load(open('data.txt', encoding='utf8'))
 
@@ -35,6 +36,18 @@ tags_related_s=[["asiatique","asie","chine","japon","corée","caligraphie","guim
 ["moderne","pop-art","picasso","dali","warhol"],["photographie"]]
 
 
+def normalize(u):
+    norme = 0
+    n = len(u)
+    m = len(u[0])
+    for i in range(n):
+        for j in range(m):
+            norme += u[i][j]
+    for i in range(n):
+        for j in range(m):
+            u[i][j] *= (1/norme)
+    return u
+
 
 def normalize_offer(n):
     words=data['offers'][str(n)]["title"].replace("'"," ").lower().split()+\
@@ -62,8 +75,28 @@ def analyze_offer_princ(n):
 
 def analyze_offer_sec(n):
     words=normalize_offer(n)
-    pref=[0]*len(tags)
-    for i in range(len(tags)):
+    pref=[0]*len(tags_sec)
+    for i in range(len(tags_sec)):
         for w in words:
             pref[i]+=tags_related_s[i].count(w)
     return pref
+
+def matrice_pref(n):
+    tagsP = analyze_offer_princ(n)
+    tagsS = analyze_offer_sec(n)
+    #nombre de colonnes
+    N = len(tags_p)
+    #nombre de lignes
+    M = len(tags_sec)
+    matrice = np.random.rand(m,n)
+    for i in range(N):
+        for j in range(M):
+            matrice[j][i] = 0
+    for i in range(N):
+        if (tagsP[i] != 0):
+            for j in range(M):
+                if (tagsS[j] != 0):
+                    matrice[j][i] = tagsS[j] + tagsP[i]
+                else:
+                    matrice[1][i] = tagsP[i]
+    return normalize(matrice)
