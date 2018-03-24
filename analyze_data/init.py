@@ -7,6 +7,8 @@ import traceback
 from utils.mock import set_from_mock
 from utils.token import get_all_tokens
 
+data = json.load(open('data_mat.txt', encoding='utf8'))
+
 @app.manager.command
 def init():
     try:
@@ -159,6 +161,24 @@ def do_init():
     thing4.thumbCount = 1
     check_and_save(thing4)
     set_from_mock("thumbs", thing4, 4)
+
+
+    def import_thing(n):
+        thing_temp = model.Thing()
+        thing_temp.type = model.ThingType.Ticket
+        thing_temp.description = data['offers'][str(n)]["description"]
+        thing_temp.name = data['offers'][str(n)]["title"]
+        #thing_temp.type = "Book"
+        thing_temp.identifier = str(n)
+        thing_temp.extraData = {
+            'location' : data['offers'][str(n)]["location"],
+            'image' : data['offers'][str(n)]["image"],
+            'price': data['offers'][str(n)]["prix"]
+        }
+        thing_temp.thumbCount = 1
+        check_and_save(thing_temp)
+        set_from_mock("thumbs", thing_temp, n+4)
+
 
     ## OFFERS
 
