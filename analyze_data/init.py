@@ -169,7 +169,7 @@ def do_init():
     things_tab=[thing1,thing2,thing3,thing4]
 
     def import_thing(n):
-        id_thing+=1
+        #id_thing+=1
         thing_temp = model.Thing()
         thing_temp.type = model.ThingType.Ticket
         thing_temp.description = data['offers'][str(n)]["description"]
@@ -184,7 +184,8 @@ def do_init():
         thing_temp.thumbCount = 1
         check_and_save(thing_temp)
 
-        set_from_mock("thumbs", thing_temp, id_thing)
+        #set_from_mock("thumbs", thing_temp, id_thing)
+        set_from_mock("thumbs", thing_temp, 5)
         things_tab.append(thing_temp)
         return thing_temp
 
