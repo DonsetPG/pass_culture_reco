@@ -163,7 +163,12 @@ def do_init():
     set_from_mock("thumbs", thing4, 4)
 
 
+    id_thing=4
+
+    things_tab=[thing1,thing2,thing3,thing4]
+
     def import_thing(n):
+        id_thing+=1
         thing_temp = model.Thing()
         thing_temp.type = model.ThingType.Ticket
         thing_temp.description = data['offers'][str(n)]["description"]
@@ -177,7 +182,12 @@ def do_init():
         }
         thing_temp.thumbCount = 1
         check_and_save(thing_temp)
-        set_from_mock("thumbs", thing_temp, n+4)
+
+        set_from_mock("thumbs", thing_temp, id_thing)
+        things_tab.append(thing_temp)
+        return thing_temp
+
+
 
 
     ## OFFERS
@@ -256,6 +266,32 @@ def do_init():
     umo.offer = offer
     umo.userMediation = user_mediation
     check_and_save(umo)
+
+
+    def create_mediation(n):
+        offer = model.Offer()
+        offer.offerer = small_library_offerer
+        offer.thing = import_thing(n)
+        offer.price = offer.thing.extraData['price']
+        offer.venue = venue_bookshop
+
+        check_and_save(offer)
+        user_mediation = model.UserMediation()
+        mediation = model.Mediation()
+        mediation.author = pro_user
+        mediation.backText = offer.thing.description
+        mediation.frontText = offer.thing.name
+        mediation.thing = offer.thing
+        user_mediation.mediation = mediation
+        user_mediation.user = client_user
+        user_mediation.validUntilDate = datetime.now() + timedelta(days=2)
+        check_and_save(user_mediation)
+        umo = model.UserMediationOffer()
+        umo.offer = offer
+        umo.userMediation = user_mediation
+        check_and_save(umo)
+
+    create_mediation(0)
 
     ## BOOKINGS
     booking = model.Booking()
