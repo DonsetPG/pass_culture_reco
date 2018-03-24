@@ -45,7 +45,8 @@ def normalize(u):
             norme += u[i][j]
     for i in range(n):
         for j in range(m):
-            u[i][j] *= (1/norme)
+            if(norme !=0):
+                u[i][j] *= (1/norme)
     return u
 
 
@@ -107,3 +108,17 @@ def matrice_pref(n):
                 else:
                     matrice[1][i] = tagsP[i]
     return normalize(matrice)
+
+
+def update_data(n):
+    mat=matrice_pref(n).tolist()
+    data['offers'][str(n)]['preference']=mat
+
+def update_all_data():
+    for i in range(len(data['offers'])):
+        update_data(i)
+
+def update_json():
+    with open('data_mat.txt', 'w') as outfile:
+        json.dump(data, outfile, indent=4, ensure_ascii=False)
+    
