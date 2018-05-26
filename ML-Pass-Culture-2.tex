@@ -4,7 +4,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{amssymb}
-
+\graphicspath{{Visuels/}}
 \usepackage[francais]{babel}
 \usepackage[utf8]{inputenc}
 
@@ -237,13 +237,18 @@ On considère encore une fois notre matrice utilisateur $\mathcal{M} (U_i)$ de c
 
 Concrétement, cette fonction représente le produit scalaire entre notre matrice et la matrice constituée que de $1$ normalisée. On cherche donc, pour mesurer la diversification, à étudier l'écart entre l'utilisateur et un utilisateur référence qui aime tout de manière égale. \\
 
+\begin{figure}[h]
+   \caption{Méthode 1 avec des vecteurs non normalisés}
+   \includegraphics[width=\linewidth]{dedeuxaquatre.png}
+\end{figure}
+
 Sur notre exemple, on se place en dimension $2$ (comme dans tout les exemples suivants). On passe du vecteur $(4,1)$ ($(\frac{4}{\sqrt{17}},\frac{1}{\sqrt{17}})$ en normalisé) au vecteur $(4,2)$ ($(\frac{4}{\sqrt{20}},\frac{2}{\sqrt{20}})$ en normalisé). En appliquant la fonction $\mathcal{D}$, on passe de $\frac{5}{\sqrt{20}}$ à $\frac{6}{\sqrt{20}}$. Il y'a donc augmentation de notre fonction $\mathcal{D}$, ce qui traduit bien une augmentation de la diversification. 
 
 
 
-\subsection{Méthode 2 et 3}
+\subsection{Méthodes 2 et 3}
 
-Ici, on trouve deux méthodes similaires, et surtout juxtaposable. On modifie légérement notre matrice $\mathcal{M} (U_i)$. On va plutôt considérer un vecteur de taille $N_2 N_1$, noté $X_n$ après la n-ième offre vue, constitué des $N_2$ vecteurs de taille $N_1$ mis bout-à-bout. On travaille ensuite dans l'espace vectoriel $\mathbb{R}^{N_2 N_1}$. Une fois que l'on a accès à ce vecteur, on peut représenter la diversification par des emplacements bien précis dans notre espace vectoriel. \\
+Ici, on trouve deux méthodes similaires, et surtout juxtaposables. On modifie légérement notre matrice $\mathcal{M} (U_i)$. On va plutôt considérer un vecteur de taille $N_2 N_1$, noté $X_n$ après la n-ième offre vue, constitué des $N_2$ vecteurs de taille $N_1$ mis bout-à-bout. On travaille ensuite dans l'espace vectoriel $\mathbb{R}^{N_2 N_1}$. Une fois que l'on a accès à ce vecteur, on peut représenter la diversification par des emplacements bien précis dans notre espace vectoriel. \\
 On note $e_i$ les vecteurs constitué de $0$ partout et d'un $1$ à la ligne $i$. On considère l'équation d'un hypercone autour de $e_i$, d'angle $\theta$ :
 
 \begin{center}
@@ -260,23 +265,55 @@ On cherche ensuite à garder notre vecteur hors des $N_2 N_1$ cones qui se trouv
 \begin{center}
 
 \[
-\arctan{\sqrt{\frac{\displaystyle \sum _{j \neq i} <X_n,e_j> ^2}{<X_n,e_i> ^2}}} - \theta
+\kappa _i = \arctan{\sqrt{\frac{\displaystyle \sum _{j \neq i} <X_n,e_j> ^2}{<X_n,e_i> ^2}}} - \theta
 \]
 
 \end{center}
 
-<<<<<<< HEAD
-qui nous donne finalement l'angle entre notre vecteur par rapport aux vecteurs générateur de notre cone. On va alors chercher à maximiser chacun de ces angles grâce à nos décisions. 
+qui nous donne finalement l'angle entre notre vecteur par rapport aux vecteurs générateur de notre cone. On va alors chercher à maximiser chacun de ces angles grâce à nos décisions (ou alors mesurer la diversification en calculant la somme des $\kappa _i$. \\
 
-=======
 
-\section{todo}
+\begin{figure}[h]
+   \caption{Méthode 2 avec des vecteurs non normalisés}
+   \includegraphics[width=\linewidth]conerouge.png}
+\end{figure}
 
-- discussions sur les coefficients \\
-- discussions sur les formules \\
-- discussions sur d'autres méthodes? \\
-- discussions sur la construction des fonctions $\Theta$, $\theta$ et $\mathcal{V}$.
->>>>>>> acf3f5939a7a2423a1054a993f5aa4a6cb3a876d
+
+On peut aussi représenter un hypercone, engendré autour d'une vecteur référence (celui qui possède toutes ses composantes sur la même valeurs). On réalise alors de la même manière un calcul d'angle entre notre vecteur et ce cône, moyennant un changement de base. Finalement, on mesure avec cette méthode l'écart de notre vecteur avec un vecteur référence. Cette méthode se rapproche donc grandement de la méthode numéro une.
+ 
+\begin{figure}[h]
+    \caption{Méthode 3 avec des vecteurs non normalisés}
+   \includegraphics[width=\linewidth]{conebleu.png}
+   \caption{Méthodes 2 et 3 avec des vecteurs non normalisés}
+   \includegraphics[width=\linewidth]{conerougeetbleu.png}
+\end{figure}
+
+\subsection{Méthode 4}
+
+Finalement, une dernière méthode qu'on peut imaginer se justifie de manière assez intuitive. On veut que l'utilisateur sorte de ses habitudes et s'écarte donc de ces dernières. Pour cela, il faut déterminer les habitudes de l'utilisateur.\\
+On fixe donc arbitrairement un entier $R\in \mathbb{N}$ représentant le nombre de "choix" d'évènements faits par l'utilisateur qui vont définir son activité récente. Tous les évènements qui datent de $R+1$ choix ou plus seront utilisés pour déterminer les habitudes de l'utilisateur.\\
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{Visuels/vecteurmoyen.png}
+  \caption{Méthode 4 - Représentation de l'habitude de l'utilisateur pour R=4}
+  \label{fig:methodequatre}
+\end{figure}
+
+On peut voir sur la \ref{fig:methodequatre}, dans un cadre à deux dimensions avec $R=4$, l'habitude de l'utilisateur représentée par le vecteur $X_{n}$ en noir, et son activité récente représentée par le vecteur $X_{n+4}-X_{n}$ en rouge.\\
+L'idée est donc de faire en sorte que chaque activité récente s'écarte des habitudes de l'utilisateur. Par conséquent, on va chercher à minimiser la quantité:
+$$|<X_{n},X_{n+4}-X_{n}>|=|<X_{n},X_{n+4}>-||X_{n}||^{2}|=|<X_{n},X_{n+4}>-1|$$
+Ce qui revient simplement
+
+\section{En pratique}
+
+Une fois la mesure de diversification d'un utilisateur réalisée, il faut regarder comment la faire évoluer. De par sa définition, il nous semble qu'on ne peut se baser sur les caractéristiques de l'utilisateur en lui même pour choisir un événement (justement car on veut le faire changer, et qu'en plus, il faut que ce nouveau type d'événement puisse lui plaire). On va donc combiner deux autres méthodes : une se basant sur les événements se rapprochant de ce qu'il aime, et une se basant sur les utilisateurs qui lui ressemblent. \\
+
+On va commencer par classer les composants de la matrice $\mathcal{M} (U_i)$ par ordre croissant. Ensuite, on va extraire les composants qui nous intéressent (par exemple les 5 moins bons, ou alors les 10 autour de la moyenne). Chacun de ces composants sont liés à un type d'événement bien défini. \\
+
+En parallèle, on réalise un double classement (grâce aux méthodes vu précédemment dans les autres sections) des événements qui satisfairont le plus l'utilisateur d'après les gens et les événements qui lui ressemblent. \\
+
+On extrait alors de ce classement un nouveau classement qui ne comprend que les types d'événements liés aux composants selectionnés. On classe une seconde fois les événements choisis grâce au calcul de la diversification qu'ils entraîneraient sur l'utilisateur. Ensuite, on réalise un classement en prenant en compte les deux classements précédents, et on envoie les offres à l'utilisateur.  \\ 
+
 
 
 \end{document}

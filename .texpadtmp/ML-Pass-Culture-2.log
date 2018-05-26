@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.26)  26 MAY 2018 18:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.26)  26 MAY 2018 19:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -594,46 +594,295 @@ Underfull \hbox (badness 10000) in paragraph at lines 215--217
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
 
  []
 
+<Visuels/dedeuxaquatre.png, id=32, 1148.8521pt x 350.7504pt>
+File: Visuels/dedeuxaquatre.png Graphic file (type png)
+
+<use Visuels/dedeuxaquatre.png>
+Package pdftex.def Info: Visuels/dedeuxaquatre.png used on input line 242.
+(pdftex.def)             Requested size: 430.00462pt x 131.27953pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [6]
-Overfull \hbox (5.01215pt too wide) in paragraph at lines 266--267
+
+./ML-Pass-Culture-2.tex:262: LaTeX Error: \begin{document} ended by \end{center
+}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.262 \end{center}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./ML-Pass-Culture-2.tex:262: Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.262 \end{center}
+                  
+Things are pretty mixed up, but I think the worst is over.
+
+
+Overfull \hbox (5.01215pt too wide) in paragraph at lines 273--274
 []\OT1/cmr/m/n/10.95 qui nous donne fi-na-le-ment l'angle entre notre vec-teur 
 par rap-port aux vec-teurs g^^Sen^^Serateur
  []
 
-[7]
+
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
+
+ []
+
+
+./ML-Pass-Culture-2.tex:278: LaTeX Error: File `c' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.278    \includegraphics[width=\linewidth]c
+                                            onerouge.png}
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./ML-Pass-Culture-2.tex:279: Extra }, or forgotten \endgroup.
+\@endfloatbox ...pagefalse \outer@nobreak \egroup 
+                                                  \color@endbox 
+l.279 \end{figure}
+                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Visuels/conebleu.png, id=37, 468.5505pt x 351.4731pt>
+File: Visuels/conebleu.png Graphic file (type png)
+
+<use Visuels/conebleu.png>
+Package pdftex.def Info: Visuels/conebleu.png used on input line 285.
+(pdftex.def)             Requested size: 430.00462pt x 322.57082pt.
+
+<Visuels/conerougeetbleu.png, id=38, 468.5505pt x 351.4731pt>
+File: Visuels/conerougeetbleu.png Graphic file (type png)
+
+<use Visuels/conerougeetbleu.png>
+Package pdftex.def Info: Visuels/conerougeetbleu.png used on input line 287.
+(pdftex.def)             Requested size: 430.00462pt x 322.57082pt.
+
+
+LaTeX Warning: Float too large for page by 131.86923pt on input line 288.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (4.56248pt too wide) in paragraph at lines 292--294
+\OT1/cmr/m/n/10.95 On fixe donc ar-bi-trai-re-ment un en-tier $\OML/cmm/m/it/10
+.95 R \OMS/cmsy/m/n/10.95 2 \U/msb/m/n/10.95 N$ \OT1/cmr/m/n/10.95 repr^^Sesent
+ant le nombre de "choix" d'^^Sev^^Renements
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 292--294
+
+ []
+
+[7 <./Visuels/dedeuxaquatre.png>]
+<Visuels/vecteurmoyen.png, id=45, 612.8496pt x 447.8331pt>
+File: Visuels/vecteurmoyen.png Graphic file (type png)
+
+<use Visuels/vecteurmoyen.png>
+Package pdftex.def Info: Visuels/vecteurmoyen.png used on input line 296.
+(pdftex.def)             Requested size: 430.00462pt x 314.21902pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `fig:methodequatre' on page 8 undefined on input line 
+301.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--311
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--313
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--315
+
+ []
+
+[8] [9]
+./ML-Pass-Culture-2.tex:318: Output loop---100 consecutive dead cycles.
+\clearpage ...rite \m@ne {}\vbox {}\penalty -\@Mi 
+                                                  
+l.318 \end{document}
+                    
+I've concluded that your \output is awry; it never does a
+\shipout, so I'm shipping \box255 out myself. Next time
+increase \maxdeadcycles if you want me to be more patient!
+
+[10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
 (/Users/paulgarnier/Documents/GitHub/pass_culture_reco/.texpadtmp/ML-Pass-Cultu
-re-2.aux) ) 
+re-2.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4127 strings out of 493089
- 56298 string characters out of 6134842
- 132812 words of memory out of 5000000
- 7545 multiletter control sequences out of 15000+600000
- 11352 words of font info for 43 fonts, out of 8000000 for 9000
+ 4166 strings out of 493089
+ 56942 string characters out of 6134842
+ 132824 words of memory out of 5000000
+ 7564 multiletter control sequences out of 15000+600000
+ 11653 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,30p,708b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cme
-x10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6
-.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on /Users/paulgarnier/Documents/GitHub/pass_culture_reco/.texpad
-tmp/ML-Pass-Culture-2.pdf (7 pages, 167001 bytes).
+tmp/ML-Pass-Culture-2.pdf (10 pages, 242307 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 103 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
