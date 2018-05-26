@@ -74,27 +74,24 @@ En effet, on définit donc une fonction attraction $\phi$ :
 
 \begin{center}
 \[
-
 \begin{array}{l|rcl}
-\phi : & \big( \mathcal{M}_{N2,N1} \big)^{2} & \longrightarrow & \left{[}0,1\right{]} \\
+\phi : & \big( \mathcal{M}_{N2,N1} \big)^{2} & \longrightarrow & [0,1] \\
     & (A,B) & \longmapsto & \displaystyle \sum _{k,l} a_{k,l}b_{k,l} \end{array}
-
 \]
 
 \end{center}
 
-Par la normalisation des matrices préférences ainsi que par la définition de $\phi$ (c'est un produit scalaire), on peut utiliser l'inégalité de Cauchy-Schwarz pour s'assurer que $\forall i,j$, on a $\phi (\mathcal{M} (U_i)$,$\mathcal{M} (O_j)) \in \left{[}0,1\right{]}$. Finalement, plus cette fonction est proche de $1$, plus l'événement est censé plaire à notre utilisateur : le produit scalaire est maximal et égal à $1$ si, et seulement si, les deux matrices de préférences sont égales. \\ On renverra donc en priorité l'offre $O_j$ qui maximise cette fonction attraction pour notre utilisateur.  \\
+Par la normalisation des matrices préférences ainsi que par la définition de $\phi$ (c'est un produit scalaire), on peut utiliser l'inégalité de Cauchy-Schwarz pour s'assurer que $\forall i,j$, on a $\phi (\mathcal{M} (U_i)$,$\mathcal{M} (O_j)) \in [0,1]$. Finalement, plus cette fonction est proche de $1$, plus l'événement est censé plaire à notre utilisateur : le produit scalaire est maximal et égal à $1$ si, et seulement si, les deux matrices de préférences sont égales. \\ On renverra donc en priorité l'offre $O_j$ qui maximise cette fonction attraction pour notre utilisateur.  \\
 
 De la même façon, on va introduire une fonction "ressemblance" $\Theta$ entre deux utilisateurs et une autre pour deux événements $\theta$ :
 
 \begin{center}
 \[
 \begin{array}{l|rcl}
-\Theta : &  \mathcal{U}^{2} & \longrightarrow & \left{[}0,1\right{]} \\
+\Theta : &  \mathcal{U}^{2} & \longrightarrow & [0,1] \\
     & (U_i,U_j) & \longmapsto & \Theta (U_i,U_j) \end{array}
-\\
 \begin{array}{l|rcl}
-\theta : & \mathcal{O}^{2} & \longrightarrow & \left{[}0,1\right{]} \\
+\theta : & \mathcal{O}^{2} & \longrightarrow & [0,1] \\
     & (O_i,O_j) & \longmapsto & \theta (O_i,O_j) \end{array}
 \]
 \end{center}
@@ -103,12 +100,12 @@ On va aussi définir une fonction $\mathcal{V}$ représentant le potentiel d'un 
 \begin{center}
 \[
 \begin{array}{l|rcl}
-\mathcal{V} : & \mathcal{U} \times \mathcal{O} & \longrightarrow & \left{[}0,1\right{]} \\
+\mathcal{V} : & \mathcal{U} \times \mathcal{O} & \longrightarrow & [0,1] \\
     & (U_i,O_j) & \longmapsto & \mathcal{V} (U_i,O_j) \end{array}
 \]
 
 \end{center}
-\newline
+
 On va ainsi construire ces différentes fonctions pour pouvoir constamment modifier les matrices  $\mathcal{M} (U_i)$ et $\mathcal{M} (O_i)$. Il faudra d'abord prendre en compte l'utilisateur précisément : ce qu'il choisit, ce qu'il ne choisit pas et comment cela modifie sur les matrices. Ensuite, il faudra prendre en compte ce que les utilisateurs qui lui ressemblent font. Finalement, on prendra aussi en compte ce que l'utilisateur choisit, non pas pour modifier les matrices mais pour directement changer les offres recommandées.
 
 \section{Le cas de l'utilisateur seul}
@@ -138,7 +135,7 @@ et on remplace $a_{p,q}$ par ce que l'on vient de calculer.
 De la même façon, on remplace $b_{p,q}$ par :
 \begin{center}
 \[
- \big( b_{p,q} \times \frac{S}{S+1} + a_{p,q}\times \frac{1}{S+1} \big \times \frac{\mathcal{V}(U_{i_0},O_{j_0})}{\#\mathcal{U}})
+ \big( b_{p,q} \times \frac{S}{S+1} + a_{p,q}\times \frac{1}{S+1}) \big( \times \frac{\mathcal{V}(U_{i_0},O_{j_{0}})}{\#\mathcal{U}})
 \]
 \end{center}
 
@@ -157,7 +154,7 @@ Il semblerait qu'ici, on puisse se contenter de réaliser les mêmes calculs mai
 et :
 \begin{center}
 \[
- \big( b_{p,q} \times \frac{S}{S+1} + (1 - a_{p,q})\times \frac{1}{S+1} \big) \times \frac{\mathcal{\tilde{\beta}}}{\#\mathcal{U}}
+ \big( b_{p,q} \times \frac{S}{S+1} + (1 - a_{p,q})\times \frac{1}{S+1}) \big( \times \frac{\mathcal{\tilde{\beta}}}{\#\mathcal{U}}
 \]
 \end{center}
 
@@ -182,7 +179,7 @@ C'est une nouvelle fonction d'attraction qui prend ici en compte les autres util
 \begin{center}
 \[
 \begin{array}{l|rcl}
-\Delta : & \mathcal{U} \times \mathcal{O} & \longrightarrow & \left{[}0,1\right{]} \\
+\Delta : & \mathcal{U} \times \mathcal{O} & \longrightarrow & [0,1] \\
     & (U_i,O_j) & \longmapsto & \frac{1}{2} \left| \psi(U_i,O_j) - \phi(U_i,O_j)   \right| \end{array}
 \]
 
@@ -210,7 +207,6 @@ Finalement, on va enfin modifier les bon coefficients $\{a_{p,q} \; ; \; (p,q) \
    \right .
 \]
 \end{center}
-\\
 
 On va maintenant voir comment les autres utilisateurs peuvent directement influencer les offres proposées. Il nous suffit de remplacer la fonction d'attraction $\phi$ par $\psi$. On récupère ainsi les offres proposées par $\psi$ et pas par $\phi$, et on les injecte avec une proportion de $z \%$.
 
