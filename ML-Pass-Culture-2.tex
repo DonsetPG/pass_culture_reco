@@ -75,7 +75,7 @@ En effet, on définit donc une fonction attraction $\phi$ :
 \begin{center}
 \[
 \begin{array}{l|rcl}
-\phi : & \big( \mathcal{M}_{N2,N1} \big)^{2} & \longrightarrow & [0,1] \\
+\phi : & \big( \mathcal{M}_{N_2,N_1} \big)^{2} & \longrightarrow & [0,1] \\
     & (A,B) & \longmapsto & \displaystyle \sum _{k,l} a_{k,l}b_{k,l} \end{array}
 \]
 
@@ -219,7 +219,7 @@ Il ne nous reste plus qu'à appliquer notre fonction d'attraction $\phi$ à cet 
 
 \section{Autour de la Diversification}
 
-L'idée ici est de discuter autour des différentes façons de mesurer la diversification d'un utilisateur. Par diversification, on entend la capacité qu'à l'utilisateur de s'éloigner de ce qu'il aime pour découvrir de nouvelles choses. À cette notion est liée deux problèmes : d'abord, comment mesurer la diversification. Ensuite, comme faire pour l'augmenter? On élabore ici différente manière de mesurer la diversification, puis comment la faire évoluer. 
+L'idée ici est de discuter des différentes façons de mesurer la diversification d'un utilisateur. Par diversification, on entend la capacité qu'a l'utilisateur de s'éloigner de ce qu'il aime pour découvrir de nouvelles choses. À cette notion est liée deux problèmes : d'abord, comment mesurer la diversification. Ensuite, comme faire pour l'augmenter? On élabore ici différente manière de mesurer la diversification, puis comment la faire évoluer. 
 
 \subsection{Méthode 1} 
 
@@ -235,7 +235,7 @@ On considère encore une fois notre matrice utilisateur $\mathcal{M} (U_i)$ de c
 
 \end{center}
 
-Concretement, cette fonction représente le produit scalaire entre notre matrice et la matrice constituée que de $1$ normalisée. On cherche donc, pour mesurer la diversification, à étudier l'écart entre l'utilisateur et un utilisateur référence qui aime tout de manière égale. \\
+Concrétement, cette fonction représente le produit scalaire entre notre matrice et la matrice constituée que de $1$ normalisée. On cherche donc, pour mesurer la diversification, à étudier l'écart entre l'utilisateur et un utilisateur référence qui aime tout de manière égale. \\
 
 Sur notre exemple, on se place en dimension $2$ (comme dans tout les exemples suivants). On passe du vecteur $(4,1)$ ($(\frac{4}{\sqrt{17}},\frac{1}{\sqrt{17}})$ en normalisé) au vecteur $(4,2)$ ($(\frac{4}{\sqrt{20}},\frac{2}{\sqrt{20}})$ en normalisé). En appliquant la fonction $\mathcal{D}$, on passe de $\frac{5}{\sqrt{20}}$ à $\frac{6}{\sqrt{20}}$. Il y'a donc augmentation de notre fonction $\mathcal{D}$, ce qui traduit bien une augmentation de la diversification. 
 
@@ -251,18 +251,24 @@ On note $e_i$ les vecteurs constitué de $0$ partout et d'un $1$ à la ligne $i$
 \[
 \displaystyle \sum _{j \neq i} y_j ^2 = y_i ^2 (\tan{\theta}) ^2
 \]
+\end{center}
 
 On cherche ensuite à garder notre vecteur hors des $N_2 N_1$ cones qui se trouvent autour de chacun des vecteurs unitaires. Pour ce faire, on calcul la quantité :
 \end{center}
 
 
 \begin{center}
+
 \[
-\arctan{\sqrt{\frac{\displaystyle \sum _{j \neq i} <X_n,e_j> ^2}{<X_n,e_i> ^2}}}
+\arctan{\sqrt{\frac{\displaystyle \sum _{j \neq i} <X_n,e_j> ^2}{<X_n,e_i> ^2}}} - \theta
 \]
 
 \end{center}
 
+<<<<<<< HEAD
+qui nous donne finalement l'angle entre notre vecteur par rapport aux vecteurs générateur de notre cone. On va alors chercher à maximiser chacun de ces angles grâce à nos décisions. 
+
+=======
 
 \section{todo}
 
@@ -270,6 +276,7 @@ On cherche ensuite à garder notre vecteur hors des $N_2 N_1$ cones qui se trouv
 - discussions sur les formules \\
 - discussions sur d'autres méthodes? \\
 - discussions sur la construction des fonctions $\Theta$, $\theta$ et $\mathcal{V}$.
+>>>>>>> acf3f5939a7a2423a1054a993f5aa4a6cb3a876d
 
 
 \end{document}
