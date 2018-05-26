@@ -8,6 +8,7 @@ from sqlalchemy.sql.expression import cast
 from sqlalchemy.sql.functions import coalesce
 
 from utils.search import create_tsvector
+import numpy as np
 
 db = app.db
 
@@ -75,6 +76,18 @@ class Offer(app.model.PcObject,
     groupSize = db.Column(db.Integer,
                           nullable=False,
                           default=1)
+
+    tags=["arts de la rue","autres","chansons / variétés","cirque / magie","danse","humour / café-théâtre",
+    "musique classique / opéra",
+    "musique du monde","musique hip-hop / rnb / soul","musique jazz / blues / reggae","musique pop / rock / electro",
+    "pluridisciplinaire","spectacle jeunesse","spectacle musical / cabaret / opérette","théâtre",
+    "cinéma","livre","musée","exposition","conférence","visite"]
+
+
+    tags_sec=["asiatique","france","anglo-saxon","hispanique","germanique","africain","classique",
+    "baroque","impressionniste","moderne","photographie"]
+
+    preferences = np.zeros((len(tags),len(tags_sec)))
 
     @hybrid_property
     def object(self):

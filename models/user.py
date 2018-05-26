@@ -2,7 +2,10 @@ import bcrypt
 from flask import current_app as app
 
 db = app.db
-
+amount_user = 1
+alpha = 1
+alphaBis = 1
+betaBis = 1
 
 class User(app.model.PcObject,
             db.Model,
@@ -18,6 +21,42 @@ class User(app.model.PcObject,
                                    back_populates="user")
 
     account = db.Column(db.Numeric(10,2))
+
+    preferences=[1]*Offer.tags.length
+
+    #What the users liked (type Offer)
+    accepted=[]
+
+    #What the user disliked (type Offer)
+    rejected=[]
+
+    #The offers the user has already seen
+    seen=accepted+rejected
+
+
+
+
+    #When a user likes an offer
+    def chooseOffer(offer, liked):
+        n=seen.length
+        if(liked):
+            accepted.append(offer)
+
+            for i in range(Offer.tags.length):
+                preferences[i] += alpha * ((n/(n+1))*preferences[i] + (1/(n+1))*offer.preferences[i])
+                offer.preferences[i] += beta * ((n/(n+1))*offer.preferences[i] + (1/(n+1))*preferences[i]) * (V(preferences,offer.preferences)/amount_user)
+        else:
+            rejected.append(offer)
+            for i in range(Offer.tags.length):
+                preferences[i]+= alphaBis* ((n/(n+1))*preferences[i] + (1/(n+1))*(1-offer.preferences[i]))
+                offer.preferences[i] += (betaBis/amount_user)* ((n/(n+1))*offer.preferences[i] + (1/(n+1))*(1-preferences[i]))
+
+        seen.append(offer)
+
+
+
+
+
 
     def checkPassword(self, passwordToCheck):
         return bcrypt.hashpw(passwordToCheck.encode('utf-8'), self.password) == self.password
