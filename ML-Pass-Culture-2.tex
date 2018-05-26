@@ -230,7 +230,6 @@ On considère encore une fois notre matrice utilisateur $\mathcal{M} (U_i)$ de c
 \begin{array}{l|rcl}
 \mathcal{D} : &  \mathcal{M}_{N_2,N_1} & \longrightarrow & [0,1] \\
     & \mathcal{M} (U_i) & \longmapsto & \frac{1}{\sqrt{N_2 N_1}} \displaystyle \sum _{k,l} a_{k,l}
-    
     \end{array}
 \]
 
@@ -245,15 +244,18 @@ Sur notre exemple, on se place en dimension $2$ (comme dans tout les exemples su
 \subsection{Méthode 2 et 3}
 
 Ici, on trouve deux méthodes similaires, et surtout juxtaposable. On modifie légérement notre matrice $\mathcal{M} (U_i)$. On va plutôt considérer un vecteur de taille $N_2 N_1$, noté $X_n$ après la n-ième offre vue, constitué des $N_2$ vecteurs de taille $N_1$ mis bout-à-bout. On travaille ensuite dans l'espace vectoriel $\mathbb{R}^{N_2 N_1}$. Une fois que l'on a accès à ce vecteur, on peut représenter la diversification par des emplacements bien précis dans notre espace vectoriel. \\
-On note $e_i$ les vecteurs constitué de $0$ partout et d'un $1$ à la ligne $i$. On considère l'équation d'un hypercone autour de $e_i$, d'angle $\theta$ : 
+On note $e_i$ les vecteurs constitué de $0$ partout et d'un $1$ à la ligne $i$. On considère l'équation d'un hypercone autour de $e_i$, d'angle $\theta$ :
 
 \begin{center}
+
 \[
 \displaystyle \sum _{j \neq i} y_j ^2 = y_i ^2 (\tan{\theta}) ^2
 \]
 \end{center}
 
 On cherche ensuite à garder notre vecteur hors des $N_2 N_1$ cones qui se trouvent autour de chacun des vecteurs unitaires. Pour ce faire, on calcul la quantité :
+\end{center}
+
 
 \begin{center}
 
@@ -263,8 +265,18 @@ On cherche ensuite à garder notre vecteur hors des $N_2 N_1$ cones qui se trouv
 
 \end{center}
 
+<<<<<<< HEAD
 qui nous donne finalement l'angle entre notre vecteur par rapport aux vecteurs générateur de notre cone. On va alors chercher à maximiser chacun de ces angles grâce à nos décisions. 
 
+=======
+
+\section{todo}
+
+- discussions sur les coefficients \\
+- discussions sur les formules \\
+- discussions sur d'autres méthodes? \\
+- discussions sur la construction des fonctions $\Theta$, $\theta$ et $\mathcal{V}$.
+>>>>>>> acf3f5939a7a2423a1054a993f5aa4a6cb3a876d
 
 
 \end{document}
