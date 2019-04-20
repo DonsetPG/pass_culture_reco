@@ -11,7 +11,7 @@ UserMediation = app.model.UserMediation
 UserMediationOffer = app.model.UserMediationOffer
 Thing = app.model.Thing
 
-### ICI POUR DES VECTEURS
+### ICI POUR DES VECTEURSS
 
 def attraction(L1,L2):
     n1 = len(L1)
